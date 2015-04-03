@@ -98,3 +98,6 @@ ENDIF (NOT WIN32)
 # STATIC - we want glew to be a static library
 
 ADD_DEFINITIONS(-DGLEW_STATIC)
+
+CONFIGURE_FILE(GlewConfig.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/GlewConfig.cmake" @ONLY)
+export(TARGETS ${SCI_GLEW_LIBRARY} FILE GlewExports.cmake)

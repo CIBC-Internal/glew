@@ -1,0 +1,4 @@
+set(SCI_GLEW_INCLUDE "@SCI_GLEW_INCLUDE@")
+ 
+# These are IMPORTED targets created by FooBarTargets.cmake
+set(SCI_GLEW_LIBRARY @SCI_GLEW_LIBRARY@)
