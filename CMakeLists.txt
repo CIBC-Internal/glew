@@ -67,6 +67,12 @@ SET(GLEW_SRCS
   include/GL/wglew.h)
 
 ###########################################
+# Specific defines that need to be set
+# STATIC - we want glew to be a static library
+
+ADD_DEFINITIONS(-DGLEW_STATIC)
+
+###########################################
 # Build the libary statically
 
 ADD_LIBRARY(${SCI_GLEW_LIBRARY} STATIC ${GLEW_SRCS})
@@ -93,11 +99,8 @@ IF (NOT WIN32)
   )
 ENDIF (NOT WIN32)
 
-###########################################
-# Specific defines that need to be set
-# STATIC - we want glew to be a static library
-
-ADD_DEFINITIONS(-DGLEW_STATIC)
+SET(SCI_GLEW_LIBRARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
+SET(GLEW_USE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/UseGlew.cmake")
 
 CONFIGURE_FILE(GlewConfig.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/GlewConfig.cmake" @ONLY)
-export(TARGETS ${SCI_GLEW_LIBRARY} FILE GlewExports.cmake)
+EXPORT(TARGETS ${SCI_GLEW_LIBRARY} FILE GlewExports.cmake)
